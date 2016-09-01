@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+ "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <!-- This should cause an error because sqlMapGenerator is always required
+       for Ibatis2 -->
+  <context id="Ibatis2Java5" targetRuntime="Ibatis2Java5" defaultModelType="flat" >
+    <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/ads"
+        userId="root"  password="123456"/>
+
+    <javaModelGenerator targetPackage="com.bplow.netconn.systemmng.dao.entity"
+        targetProject="target/">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+    
+    <sqlMapGenerator targetPackage="test.xml"  targetProject="target/">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <javaClientGenerator type="GENERIC-CI" targetPackage="com.bplow.netconn.systemmng.dao.impl"
+        targetProject="target/">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+    
+    <!-- <table tableName="person" /> 
+    <table tableName="sys_user" />
+    <table tableName="tb_customer_data" />-->
+    <table tableName="sys_menu" />
+    <table tableName="sys_organization" />
+    <table tableName="sys_organize_user_rel" />
+    <table tableName="sys_role" />
+    <table tableName="tb_web_server" />
+    <!-- <table tableName="awful table" alias="A">
+      <property name="useColumnIndexes" value="true"/>
+      <generatedKey column="CuStOmEr iD" sqlStatement="JDBC" />
+      <columnOverride column="first name" property="firstFirstName" />
+      <columnOverride column="first_name" property="secondFirstName" />
+      <columnOverride column="firstName" property="thirdFirstName" />
+      <columnOverride column="from" delimitedColumnName="true" >
+        <property name="fredswife" value="wilma"/>
+      </columnOverride>
+      <columnOverride column="active" javaType="boolean" />
+    </table> -->
+  </context>
+</generatorConfiguration>
