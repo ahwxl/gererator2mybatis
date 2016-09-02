@@ -40,7 +40,7 @@ public class SelectByExampleWithoutBLOBsElementGenerator extends
         XmlElement answer = new XmlElement("select"); //$NON-NLS-1$
 
         answer.addAttribute(new Attribute("id", //$NON-NLS-1$
-                introspectedTable.getSelectByExampleStatementId()));
+                "query"));
         answer.addAttribute(new Attribute(
                 "resultMap", introspectedTable.getBaseResultMapId())); //$NON-NLS-1$
         answer.addAttribute(new Attribute("parameterType", fqjt)); //$NON-NLS-1$
@@ -90,7 +90,7 @@ public class SelectByExampleWithoutBLOBsElementGenerator extends
         
         answer.addElement(whereElement);
         
-        answer.addElement(new TextElement(" order by GMT_MODIFY "));
+        answer.addElement(new TextElement(" order by GMT_MODIFY desc "));
 
         if (context.getPlugins()
                 .sqlMapSelectByExampleWithoutBLOBsElementGenerated(answer,
