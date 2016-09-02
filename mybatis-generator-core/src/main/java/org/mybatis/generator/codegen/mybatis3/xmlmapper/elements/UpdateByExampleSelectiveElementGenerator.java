@@ -43,7 +43,7 @@ public class UpdateByExampleSelectiveElementGenerator extends
 
         answer.addAttribute(new Attribute("parameterType", "map")); //$NON-NLS-1$ //$NON-NLS-2$
 
-        context.getCommentGenerator().addComment(answer);
+        //context.getCommentGenerator().addComment(answer);
 
         StringBuilder sb = new StringBuilder();
         sb.append("update "); //$NON-NLS-1$

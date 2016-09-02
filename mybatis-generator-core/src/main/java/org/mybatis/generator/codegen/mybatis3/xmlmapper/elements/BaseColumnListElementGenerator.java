@@ -41,7 +41,7 @@ public class BaseColumnListElementGenerator extends AbstractXmlElementGenerator 
         answer.addAttribute(new Attribute("id", //$NON-NLS-1$
                 introspectedTable.getBaseColumnListId()));
 
-        context.getCommentGenerator().addComment(answer);
+        //context.getCommentGenerator().addComment(answer);
 
         StringBuilder sb = new StringBuilder();
         Iterator<IntrospectedColumn> iter = introspectedTable

@@ -38,7 +38,7 @@ public class SelectByPrimaryKeyElementGenerator extends
     @Override
     public void addElements(XmlElement parentElement) {
         XmlElement answer = new XmlElement("select"); //$NON-NLS-1$
-
+        
         answer.addAttribute(new Attribute(
                 "id", introspectedTable.getSelectByPrimaryKeyStatementId())); //$NON-NLS-1$
         if (introspectedTable.getRules().generateResultMapWithBLOBs()) {
@@ -66,7 +66,7 @@ public class SelectByPrimaryKeyElementGenerator extends
         answer.addAttribute(new Attribute("parameterType", //$NON-NLS-1$
                 parameterType));
 
-        context.getCommentGenerator().addComment(answer);
+        //context.getCommentGenerator().addComment(answer);
 
         StringBuilder sb = new StringBuilder();
         sb.append("select "); //$NON-NLS-1$

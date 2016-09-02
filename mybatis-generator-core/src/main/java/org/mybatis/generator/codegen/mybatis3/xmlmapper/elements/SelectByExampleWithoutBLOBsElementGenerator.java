@@ -45,13 +45,13 @@ public class SelectByExampleWithoutBLOBsElementGenerator extends
                 "resultMap", introspectedTable.getBaseResultMapId())); //$NON-NLS-1$
         answer.addAttribute(new Attribute("parameterType", fqjt)); //$NON-NLS-1$
 
-        context.getCommentGenerator().addComment(answer);
+        //context.getCommentGenerator().addComment(answer);
 
         answer.addElement(new TextElement("select")); //$NON-NLS-1$
         XmlElement ifElement = new XmlElement("if"); //$NON-NLS-1$
         ifElement.addAttribute(new Attribute("test", "distinct")); //$NON-NLS-1$ //$NON-NLS-2$
         ifElement.addElement(new TextElement("distinct")); //$NON-NLS-1$
-        answer.addElement(ifElement);
+        //answer.addElement(ifElement);
 
         StringBuilder sb = new StringBuilder();
         if (stringHasValue(introspectedTable
@@ -67,13 +67,30 @@ public class SelectByExampleWithoutBLOBsElementGenerator extends
         sb.append("from "); //$NON-NLS-1$
         sb.append(introspectedTable
                 .getAliasedFullyQualifiedTableNameAtRuntime());
-        answer.addElement((new TextElement(sb.toString())));
-        answer.addElement(getExampleIncludeElement());
+        //answer.addElement((new TextElement(sb.toString())));
+        //answer.addElement(getExampleIncludeElement());
 
         ifElement = new XmlElement("if"); //$NON-NLS-1$
         ifElement.addAttribute(new Attribute("test", "orderByClause != null")); //$NON-NLS-1$ //$NON-NLS-2$
         ifElement.addElement(new TextElement("order by ${orderByClause}")); //$NON-NLS-1$
-        answer.addElement(ifElement);
+        //answer.addElement(ifElement);
+        
+        XmlElement whereElement = new XmlElement("where");
+        XmlElement trimElement = new XmlElement("trim");
+        trimElement.addAttribute(new Attribute("prefixOverrides", "AND"));
+        XmlElement subtrimElement = new XmlElement("trim");
+        subtrimElement.addAttribute(new Attribute("prefix", "AND"));
+        ifElement = new XmlElement("if");
+        ifElement.addAttribute(new Attribute("test", "!@isEmpty(id)"));
+        ifElement.addElement(new TextElement(" ID = #{id} "));
+        
+        subtrimElement.addElement(ifElement);
+        trimElement.addElement(subtrimElement);
+        whereElement.addElement(trimElement);
+        
+        answer.addElement(whereElement);
+        
+        answer.addElement(new TextElement(" order by GMT_MODIFY "));
 
         if (context.getPlugins()
                 .sqlMapSelectByExampleWithoutBLOBsElementGenerated(answer,

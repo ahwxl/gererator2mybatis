@@ -1,14 +1,21 @@
 <project default="genfiles" basedir=".">
-     <property name="generated.source.dir" value="c:/wxl/" />
+	<property name="generated.source.dir" value="c:/wxl/" />
 
-     <target name="genfiles" description="Generate the files">
-       <taskdef name="mbgenerator"
+	<target name="genfiles" description="Generate the files">
+		<taskdef name="mbgenerator"
                 classname="org.mybatis.generator.ant.GeneratorAntTask"
-                classpath="target/mybatis-generator-core-1.3.3-SNAPSHOT.jar" />
-       <mbgenerator overwrite="true" configfile="target/test-classes/gConfigIbatis2.xml" verbose="false" >
-         <propertyset>
-           <propertyref name="generated.source.dir"/>
-         </propertyset>
-       </mbgenerator>
-     </target>
-   </project>
+                classpath="target/mybatis-generator-core-1.3.3-SNAPSHOT.jar" >
+			<classpath>
+				<pathelement path="${classpath}"/>
+				<fileset dir="lib">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+		</taskdef>
+		<mbgenerator overwrite="true" configfile="target/test-classes/gConfigmybatis.xml" verbose="false" >
+			<propertyset>
+				<propertyref name="generated.source.dir"/>
+			</propertyset>
+		</mbgenerator>
+	</target>
+</project>

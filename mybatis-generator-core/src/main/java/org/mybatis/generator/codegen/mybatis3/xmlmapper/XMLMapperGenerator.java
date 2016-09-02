@@ -20,6 +20,7 @@ import static org.mybatis.generator.internal.util.messages.Messages.getString;
 import org.mybatis.generator.api.FullyQualifiedTable;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.Document;
+import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.AbstractXmlGenerator;
 import org.mybatis.generator.codegen.XmlConstants;
@@ -64,28 +65,36 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         answer.addAttribute(new Attribute("namespace", //$NON-NLS-1$
                 namespace));
 
-        context.getCommentGenerator().addRootComment(answer);
+        //context.getCommentGenerator().addRootComment(answer);
+        answer.addElement(new TextElement(""));
 
         addResultMapWithoutBLOBsElement(answer);
-        addResultMapWithBLOBsElement(answer);
-        addExampleWhereClauseElement(answer);
-        addMyBatis3UpdateByExampleWhereClauseElement(answer);
+        //addResultMapWithBLOBsElement(answer);
+        //addExampleWhereClauseElement(answer);
+        //addMyBatis3UpdateByExampleWhereClauseElement(answer);
+        answer.addElement(new TextElement(""));
         addBaseColumnListElement(answer);
-        addBlobColumnListElement(answer);
-        addSelectByExampleWithBLOBsElement(answer);
+        //addBlobColumnListElement(answer);
+        //addSelectByExampleWithBLOBsElement(answer);
+        answer.addElement(new TextElement(""));
         addSelectByExampleWithoutBLOBsElement(answer);
+        answer.addElement(new TextElement(""));
         addSelectByPrimaryKeyElement(answer);
+        answer.addElement(new TextElement(""));
         addDeleteByPrimaryKeyElement(answer);
-        addDeleteByExampleElement(answer);
+        //addDeleteByExampleElement(answer);
+        answer.addElement(new TextElement(""));
         addInsertElement(answer);
-        addInsertSelectiveElement(answer);
+        //addInsertSelectiveElement(answer);
+        answer.addElement(new TextElement(""));
         addCountByExampleElement(answer);
+        answer.addElement(new TextElement(""));
         addUpdateByExampleSelectiveElement(answer);
-        addUpdateByExampleWithBLOBsElement(answer);
-        addUpdateByExampleWithoutBLOBsElement(answer);
-        addUpdateByPrimaryKeySelectiveElement(answer);
-        addUpdateByPrimaryKeyWithBLOBsElement(answer);
-        addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
+        //addUpdateByExampleWithBLOBsElement(answer);
+        //addUpdateByExampleWithoutBLOBsElement(answer);
+        //addUpdateByPrimaryKeySelectiveElement(answer);
+        //addUpdateByPrimaryKeyWithBLOBsElement(answer);
+        //addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
 
         return answer;
     }

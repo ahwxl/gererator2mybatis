@@ -60,7 +60,7 @@ public class InsertElementGenerator extends AbstractXmlElementGenerator {
         answer.addAttribute(new Attribute("parameterType", //$NON-NLS-1$
                 parameterType.getFullyQualifiedName()));
 
-        context.getCommentGenerator().addComment(answer);
+        //context.getCommentGenerator().addComment(answer);
 
         GeneratedKey gk = introspectedTable.getGeneratedKey();
         if (gk != null) {

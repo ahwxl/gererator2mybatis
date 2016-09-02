@@ -59,7 +59,7 @@ public class ResultMapWithoutBLOBsElementGenerator extends
         answer.addAttribute(new Attribute("type", //$NON-NLS-1$
                 returnType));
 
-        context.getCommentGenerator().addComment(answer);
+        //context.getCommentGenerator().addComment(answer);
 
         if (introspectedTable.isConstructorBased()) {
             addResultMapConstructorElements(answer);

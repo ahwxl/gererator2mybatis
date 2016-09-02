@@ -41,14 +41,29 @@ public class CountByExampleElementGenerator extends AbstractXmlElementGenerator 
         answer.addAttribute(new Attribute("parameterType", fqjt)); //$NON-NLS-1$
         answer.addAttribute(new Attribute("resultType", "java.lang.Integer")); //$NON-NLS-1$ //$NON-NLS-2$
 
-        context.getCommentGenerator().addComment(answer);
+        //context.getCommentGenerator().addComment(answer);
 
         StringBuilder sb = new StringBuilder();
         sb.append("select count(*) from "); //$NON-NLS-1$
         sb.append(introspectedTable
                 .getAliasedFullyQualifiedTableNameAtRuntime());
         answer.addElement(new TextElement(sb.toString()));
-        answer.addElement(getExampleIncludeElement());
+        //answer.addElement(getExampleIncludeElement());
+        
+        XmlElement whereElement = new XmlElement("where");
+        XmlElement trimElement = new XmlElement("trim");
+        trimElement.addAttribute(new Attribute("prefixOverrides", "AND"));
+        XmlElement subtrimElement = new XmlElement("trim");
+        subtrimElement.addAttribute(new Attribute("prefix", "AND"));
+        XmlElement ifElement = new XmlElement("if");
+        ifElement.addAttribute(new Attribute("test", "!@isEmpty(id)"));
+        ifElement.addElement(new TextElement(" ID = #{id} "));
+        
+        subtrimElement.addElement(ifElement);
+        trimElement.addElement(subtrimElement);
+        whereElement.addElement(trimElement);
+        
+        answer.addElement(whereElement);
 
         if (context.getPlugins().sqlMapCountByExampleElementGenerated(
                 answer, introspectedTable)) {
