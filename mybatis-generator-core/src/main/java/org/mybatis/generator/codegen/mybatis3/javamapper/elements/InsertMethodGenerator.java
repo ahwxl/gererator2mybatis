@@ -59,8 +59,8 @@ public class InsertMethodGenerator extends AbstractJavaMapperMethodGenerator {
         importedTypes.add(parameterType);
         method.addParameter(new Parameter(parameterType, "record")); //$NON-NLS-1$
 
-        context.getCommentGenerator().addGeneralMethodComment(method,
-                introspectedTable);
+//        context.getCommentGenerator().addGeneralMethodComment(method,
+//                introspectedTable);
 
         addMapperAnnotations(interfaze, method);
 

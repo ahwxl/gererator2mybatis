@@ -41,7 +41,7 @@ public class DeleteByPrimaryKeyElementGenerator extends
         XmlElement answer = new XmlElement("delete"); //$NON-NLS-1$
 
         answer.addAttribute(new Attribute(
-                "id", introspectedTable.getDeleteByPrimaryKeyStatementId())); //$NON-NLS-1$
+                "id", "delete"/*introspectedTable.getDeleteByPrimaryKeyStatementId()*/)); //$NON-NLS-1$
         String parameterClass;
         if (!isSimple && introspectedTable.getRules().generatePrimaryKeyClass()) {
             parameterClass = introspectedTable.getPrimaryKeyType();

@@ -69,8 +69,8 @@ public class SelectByExampleWithoutBLOBsMethodGenerator extends
         method.setName(introspectedTable.getSelectByExampleStatementId());
         method.addParameter(new Parameter(type, "example")); //$NON-NLS-1$
 
-        context.getCommentGenerator().addGeneralMethodComment(method,
-                introspectedTable);
+//        context.getCommentGenerator().addGeneralMethodComment(method,
+//                introspectedTable);
 
         addMapperAnnotations(interfaze, method);
         

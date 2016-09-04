@@ -7,24 +7,24 @@
     <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
 
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://localhost:3306/ads"
+        connectionURL="jdbc:mysql://localhost:3306/deep"
         userId="root"  password="123456"/>
 
-    <javaModelGenerator targetPackage="ibatortest.model"
+    <javaModelGenerator targetPackage="com.bplow.deep.bpm.domain"
         targetProject="target/">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
     
-    <sqlMapGenerator targetPackage="ibatortest.mapper"  targetProject="target/">
+    <sqlMapGenerator targetPackage="com.bplow.deep.bpm.mapper"  targetProject="target/">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
    
-    <javaClientGenerator type="XMLMAPPER" targetPackage="ibatortest.client"
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.bplow.deep.bpm.mapper"
      	targetProject="target/">
     </javaClientGenerator>
 
-    <table tableName="sys_menu" />
+    <table tableName="auto_app_info" />
    
   </context>
 </generatorConfiguration>

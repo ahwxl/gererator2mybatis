@@ -73,7 +73,7 @@ public class JavaMapperGenerator extends AbstractJavaClientGenerator {
                 introspectedTable.getMyBatis3JavaMapperType());
         Interface interfaze = new Interface(type);
         interfaze.setVisibility(JavaVisibility.PUBLIC);
-        commentGenerator.addJavaFileComment(interfaze);
+        //commentGenerator.addJavaFileComment(interfaze);
 
         String rootInterface = introspectedTable
             .getTableConfigurationProperty(PropertyRegistry.ANY_ROOT_INTERFACE);
@@ -90,19 +90,19 @@ public class JavaMapperGenerator extends AbstractJavaClientGenerator {
         }
         
         addCountByExampleMethod(interfaze);
-        addDeleteByExampleMethod(interfaze);
+        //addDeleteByExampleMethod(interfaze);
         addDeleteByPrimaryKeyMethod(interfaze);
         addInsertMethod(interfaze);
-        addInsertSelectiveMethod(interfaze);
-        addSelectByExampleWithBLOBsMethod(interfaze);
+        //addInsertSelectiveMethod(interfaze);
+        //addSelectByExampleWithBLOBsMethod(interfaze);
         addSelectByExampleWithoutBLOBsMethod(interfaze);
         addSelectByPrimaryKeyMethod(interfaze);
         addUpdateByExampleSelectiveMethod(interfaze);
-        addUpdateByExampleWithBLOBsMethod(interfaze);
-        addUpdateByExampleWithoutBLOBsMethod(interfaze);
-        addUpdateByPrimaryKeySelectiveMethod(interfaze);
-        addUpdateByPrimaryKeyWithBLOBsMethod(interfaze);
-        addUpdateByPrimaryKeyWithoutBLOBsMethod(interfaze);
+        //addUpdateByExampleWithBLOBsMethod(interfaze);
+        //addUpdateByExampleWithoutBLOBsMethod(interfaze);
+        //addUpdateByPrimaryKeySelectiveMethod(interfaze);
+        //addUpdateByPrimaryKeyWithBLOBsMethod(interfaze);
+        //addUpdateByPrimaryKeyWithoutBLOBsMethod(interfaze);
 
         List<CompilationUnit> answer = new ArrayList<CompilationUnit>();
         if (context.getPlugins().clientGenerated(interfaze, null,
