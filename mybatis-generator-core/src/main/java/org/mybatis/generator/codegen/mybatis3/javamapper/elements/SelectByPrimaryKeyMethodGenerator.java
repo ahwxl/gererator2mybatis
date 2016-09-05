@@ -91,8 +91,8 @@ public class SelectByPrimaryKeyMethodGenerator extends
         
         addMapperAnnotations(interfaze, method);
 
-        context.getCommentGenerator().addGeneralMethodComment(method,
-                introspectedTable);
+//        context.getCommentGenerator().addGeneralMethodComment(method,
+//                introspectedTable);
 
         if (context.getPlugins().clientSelectByPrimaryKeyMethodGenerated(
                 method, interfaze, introspectedTable)) {

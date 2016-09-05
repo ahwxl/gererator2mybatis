@@ -16,6 +16,7 @@
 package org.mybatis.generator.codegen.mybatis3.xmlmapper.elements;
 
 import org.mybatis.generator.api.IntrospectedColumn;
+import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
@@ -27,59 +28,64 @@ import org.mybatis.generator.codegen.mybatis3.MyBatis3FormattingUtilities;
  * 
  */
 public class UpdateByExampleSelectiveElementGenerator extends
-        AbstractXmlElementGenerator {
+		AbstractXmlElementGenerator {
 
-    public UpdateByExampleSelectiveElementGenerator() {
-        super();
-    }
+	public UpdateByExampleSelectiveElementGenerator() {
+		super();
+	}
 
-    @Override
-    public void addElements(XmlElement parentElement) {
-        XmlElement answer = new XmlElement("update"); //$NON-NLS-1$
+	@Override
+	public void addElements(XmlElement parentElement) {
+		XmlElement answer = new XmlElement("update"); //$NON-NLS-1$
 
-        answer
-                .addAttribute(new Attribute(
-                        "id", introspectedTable.getUpdateByExampleSelectiveStatementId())); //$NON-NLS-1$
+		FullyQualifiedJavaType parameterType = introspectedTable.getRules()
+				.calculateAllFieldsClass();
 
-        answer.addAttribute(new Attribute("parameterType", "map")); //$NON-NLS-1$ //$NON-NLS-2$
+		answer.addAttribute(new Attribute(
+				"id", "update"/*introspectedTable.getUpdateByExampleSelectiveStatementId()*/)); //$NON-NLS-1$
 
-        //context.getCommentGenerator().addComment(answer);
+		answer.addAttribute(new Attribute(
+				"parameterType", parameterType.getFullyQualifiedName())); //$NON-NLS-1$ //$NON-NLS-2$
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("update "); //$NON-NLS-1$
-        sb.append(introspectedTable
-                .getAliasedFullyQualifiedTableNameAtRuntime());
-        answer.addElement(new TextElement(sb.toString()));
+		// context.getCommentGenerator().addComment(answer);
 
-        XmlElement dynamicElement = new XmlElement("set"); //$NON-NLS-1$
-        answer.addElement(dynamicElement);
+		StringBuilder sb = new StringBuilder();
+		sb.append("update "); //$NON-NLS-1$
+		sb.append(introspectedTable
+				.getAliasedFullyQualifiedTableNameAtRuntime());
+		answer.addElement(new TextElement(sb.toString()));
 
-        for (IntrospectedColumn introspectedColumn : introspectedTable
-                .getAllColumns()) {
-            XmlElement isNotNullElement = new XmlElement("if"); //$NON-NLS-1$
-            sb.setLength(0);
-            sb.append(introspectedColumn.getJavaProperty("record.")); //$NON-NLS-1$
-            sb.append(" != null"); //$NON-NLS-1$
-            isNotNullElement.addAttribute(new Attribute("test", sb.toString())); //$NON-NLS-1$
-            dynamicElement.addElement(isNotNullElement);
+		XmlElement dynamicElement = new XmlElement("set"); //$NON-NLS-1$
+		answer.addElement(dynamicElement);
 
-            sb.setLength(0);
-            sb.append(MyBatis3FormattingUtilities
-                    .getAliasedEscapedColumnName(introspectedColumn));
-            sb.append(" = "); //$NON-NLS-1$
-            sb.append(MyBatis3FormattingUtilities.getParameterClause(
-                    introspectedColumn, "record.")); //$NON-NLS-1$
-            sb.append(',');
+		for (IntrospectedColumn introspectedColumn : introspectedTable
+				.getAllColumns()) {
+			XmlElement isNotNullElement = new XmlElement("if"); //$NON-NLS-1$
+			sb.setLength(0);
+			sb.append(introspectedColumn.getJavaProperty("")); //$NON-NLS-1$
+			sb.append(" != null"); //$NON-NLS-1$
+			isNotNullElement.addAttribute(new Attribute("test", sb.toString())); //$NON-NLS-1$
+			dynamicElement.addElement(isNotNullElement);
 
-            isNotNullElement.addElement(new TextElement(sb.toString()));
-        }
+			sb.setLength(0);
+			sb.append(MyBatis3FormattingUtilities
+					.getAliasedEscapedColumnName(introspectedColumn));
+			sb.append(" = "); //$NON-NLS-1$
+			sb.append(MyBatis3FormattingUtilities.getParameterClause(
+					introspectedColumn, "")); //$NON-NLS-1$
+			sb.append(',');
 
-        answer.addElement(getUpdateByExampleIncludeElement());
+			isNotNullElement.addElement(new TextElement(sb.toString()));
+		}
 
-        if (context.getPlugins()
-                .sqlMapUpdateByExampleSelectiveElementGenerated(answer,
-                        introspectedTable)) {
-            parentElement.addElement(answer);
-        }
-    }
+		// answer.addElement(getUpdateByExampleIncludeElement());
+
+		answer.addElement(new TextElement(" WHERE ID = #{id} "));
+
+		if (context.getPlugins()
+				.sqlMapUpdateByExampleSelectiveElementGenerated(answer,
+						introspectedTable)) {
+			parentElement.addElement(answer);
+		}
+	}
 }

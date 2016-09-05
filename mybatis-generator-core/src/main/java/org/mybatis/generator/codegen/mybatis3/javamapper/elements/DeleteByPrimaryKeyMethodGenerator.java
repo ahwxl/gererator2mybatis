@@ -84,8 +84,8 @@ public class DeleteByPrimaryKeyMethodGenerator extends
             }
         }
 
-        context.getCommentGenerator().addGeneralMethodComment(method,
-                introspectedTable);
+//        context.getCommentGenerator().addGeneralMethodComment(method,
+//                introspectedTable);
 
         addMapperAnnotations(interfaze, method);
         

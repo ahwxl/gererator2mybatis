@@ -17,6 +17,7 @@ package org.mybatis.generator.codegen.mybatis3.xmlmapper.elements;
 
 import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
 
+import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
@@ -36,11 +37,15 @@ public class SelectByExampleWithoutBLOBsElementGenerator extends
     @Override
     public void addElements(XmlElement parentElement) {
         String fqjt = introspectedTable.getExampleType();
+        
+        FullyQualifiedJavaType parameterType = introspectedTable.getRules()
+				.calculateAllFieldsClass();
+        fqjt = parameterType.getFullyQualifiedName();
 
         XmlElement answer = new XmlElement("select"); //$NON-NLS-1$
 
         answer.addAttribute(new Attribute("id", //$NON-NLS-1$
-                "query"));
+                "queryForPage"));
         answer.addAttribute(new Attribute(
                 "resultMap", introspectedTable.getBaseResultMapId())); //$NON-NLS-1$
         answer.addAttribute(new Attribute("parameterType", fqjt)); //$NON-NLS-1$
@@ -81,7 +86,7 @@ public class SelectByExampleWithoutBLOBsElementGenerator extends
         XmlElement subtrimElement = new XmlElement("trim");
         subtrimElement.addAttribute(new Attribute("prefix", "AND"));
         ifElement = new XmlElement("if");
-        ifElement.addAttribute(new Attribute("test", "!@isEmpty(id)"));
+        ifElement.addAttribute(new Attribute("test", "id != null"/*"!@isEmpty(id)"*/));
         ifElement.addElement(new TextElement(" ID = #{id} "));
         
         subtrimElement.addElement(ifElement);
@@ -90,7 +95,7 @@ public class SelectByExampleWithoutBLOBsElementGenerator extends
         
         answer.addElement(whereElement);
         
-        answer.addElement(new TextElement(" order by GMT_MODIFY desc "));
+        answer.addElement(new TextElement(" ORDER BY GMT_MODIFY DESC "));
 
         if (context.getPlugins()
                 .sqlMapSelectByExampleWithoutBLOBsElementGenerated(answer,
