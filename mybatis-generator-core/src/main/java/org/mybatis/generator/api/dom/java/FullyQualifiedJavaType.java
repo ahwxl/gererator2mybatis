@@ -431,6 +431,11 @@ public class FullyQualifiedJavaType implements
 
         return generatedCriteriaInstance;
     }
+    
+    public static final FullyQualifiedJavaType getNewPageInstance() {
+        // always return a new instance because the type may be parameterized
+        return new FullyQualifiedJavaType("com.bplow.deep.base.pagination.Page"); //$NON-NLS-1$
+    }
 
     /*
      * (non-Javadoc)

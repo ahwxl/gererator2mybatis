@@ -44,13 +44,13 @@ public class SelectByExampleWithoutBLOBsMethodGenerator extends
         FullyQualifiedJavaType type = new FullyQualifiedJavaType(
                 introspectedTable.getExampleType());
         importedTypes.add(type);
-        importedTypes.add(FullyQualifiedJavaType.getNewListInstance());
+        importedTypes.add(FullyQualifiedJavaType.getNewPageInstance());
 
         Method method = new Method();
         method.setVisibility(JavaVisibility.PUBLIC);
 
         FullyQualifiedJavaType returnType = FullyQualifiedJavaType
-                .getNewListInstance();
+                .getNewPageInstance();
         FullyQualifiedJavaType listType;
         if (introspectedTable.getRules().generateBaseRecordClass()) {
             listType = new FullyQualifiedJavaType(introspectedTable
@@ -67,7 +67,7 @@ public class SelectByExampleWithoutBLOBsMethodGenerator extends
         method.setReturnType(returnType);
 
         method.setName(introspectedTable.getSelectByExampleStatementId());
-        method.addParameter(new Parameter(type, "example")); //$NON-NLS-1$
+        method.addParameter(new Parameter(type, "record")); //$NON-NLS-1$
 
 //        context.getCommentGenerator().addGeneralMethodComment(method,
 //                introspectedTable);

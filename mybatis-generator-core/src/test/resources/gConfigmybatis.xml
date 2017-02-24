@@ -10,21 +10,22 @@
         connectionURL="jdbc:mysql://localhost:3306/deep"
         userId="root"  password="123456"/>
 
-    <javaModelGenerator targetPackage="com.bplow.deep.bpm.domain"
+    <javaModelGenerator targetPackage="com.bplow.deep.stock.domain"
         targetProject="target/">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
     
-    <sqlMapGenerator targetPackage="com.bplow.deep.bpm.mapper"  targetProject="target/">
+    <sqlMapGenerator targetPackage="com.bplow.deep.stock.mapper"  targetProject="target/">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
    
-    <javaClientGenerator type="XMLMAPPER" targetPackage="com.bplow.deep.bpm.mapper"
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.bplow.deep.stock.mapper"
      	targetProject="target/">
     </javaClientGenerator>
 
-    <table tableName="auto_app_info" />
+    <table tableName="sk_transaction_record" />
+    <table tableName="sk_warehouse_positon" />
    
   </context>
 </generatorConfiguration>
