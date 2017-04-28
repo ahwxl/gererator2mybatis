@@ -242,6 +242,9 @@ public class JavaBeansUtil {
         field.setVisibility(JavaVisibility.PRIVATE);
         field.setType(fqjt);
         field.setName(property);
+        if(StringUtility.stringHasValue(introspectedColumn.getRemarks())){
+            field.addAnnotation("@XmlElement(name=\""+introspectedColumn.getRemarks()+"\")");
+        }
 //        context.getCommentGenerator().addFieldComment(field,
 //                introspectedTable, introspectedColumn);
 

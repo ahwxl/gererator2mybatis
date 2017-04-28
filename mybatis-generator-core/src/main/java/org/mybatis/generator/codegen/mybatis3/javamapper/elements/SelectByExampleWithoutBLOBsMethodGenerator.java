@@ -67,7 +67,7 @@ public class SelectByExampleWithoutBLOBsMethodGenerator extends
         method.setReturnType(returnType);
 
         method.setName(introspectedTable.getSelectByExampleStatementId());
-        method.addParameter(new Parameter(type, "record")); //$NON-NLS-1$
+        method.addParameter(new Parameter(type, type.getShortName())); //$NON-NLS-1$
 
 //        context.getCommentGenerator().addGeneralMethodComment(method,
 //                introspectedTable);

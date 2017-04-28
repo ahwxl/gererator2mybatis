@@ -171,7 +171,7 @@ public class Interface extends JavaElement implements CompilationUnit {
 
         sb.append(" {"); //$NON-NLS-1$
         indentLevel++;
-
+        newLine(sb);
         Iterator<Method> mtdIter = getMethods().iterator();
         while (mtdIter.hasNext()) {
             newLine(sb);

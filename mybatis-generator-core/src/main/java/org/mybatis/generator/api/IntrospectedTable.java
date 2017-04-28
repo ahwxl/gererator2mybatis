@@ -788,7 +788,7 @@ public abstract class IntrospectedTable {
 
         setCountByExampleStatementId("countByExample"); //$NON-NLS-1$
         setDeleteByExampleStatementId("deleteByExample"); //$NON-NLS-1$
-        setDeleteByPrimaryKeyStatementId("deleteByPrimaryKey"); //$NON-NLS-1$
+        setDeleteByPrimaryKeyStatementId("delete"); //$NON-NLS-1$
         setInsertStatementId("insert"); //$NON-NLS-1$
         setInsertSelectiveStatementId("insertSelective"); //$NON-NLS-1$
         setSelectAllStatementId("selectAll"); //$NON-NLS-1$

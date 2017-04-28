@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2009-2015 The MyBatis Team
 
@@ -14,29 +14,26 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-
 <!--
   version: $Id: pom.xml 4114 2011-11-27 19:03:32Z simone.tripodi $
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <parent>
-    <groupId>org.mybatis.generator</groupId>
-    <artifactId>mybatis-generator</artifactId>
-    <version>1.3.3-SNAPSHOT</version>
-  </parent>
-
-  <artifactId>mybatis-generator-core</artifactId>
-  <packaging>jar</packaging>
-  <name>MyBatis Generator Core</name>
-
-  <build>
-    <!-- this build creates and installs an instrumented JAR file
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.mybatis.generator</groupId>
+        <artifactId>mybatis-generator</artifactId>
+        <version>1.3.3-SNAPSHOT</version>
+    </parent>
+    <artifactId>mybatis-generator-core</artifactId>
+    <packaging>jar</packaging>
+    <name>MyBatis Generator Core</name>
+    <build>
+<!-- this build creates and installs an instrumented JAR file
          for use by the systests projects - so we can gather
          consolidated coverage information
     -->
-    <!-- <plugins>
+<!-- <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
@@ -110,53 +107,54 @@
         </configuration>
       </plugin>
     </plugins> -->
-  </build>
-  
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>jdepend-maven-plugin</artifactId>
-        <version>2.0</version>
-      </plugin>
-    </plugins>
-  </reporting>
-
-  <dependencies>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <scope>provided</scope>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.ant</groupId>
-      <artifactId>ant</artifactId>
-      <scope>provided</scope>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.35</version>
-	</dependency>
-  </dependencies>
-
-  <scm>
-    <url>http://github.com/mybatis/generator</url>
-    <connection>scm:git:ssh://github.com/mybatis/generator.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/mybatis/generator.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jdepend-maven-plugin</artifactId>
+                <version>2.0</version>
+            </plugin>
+        </plugins>
+    </reporting>
+    <dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.35</version>
+        </dependency>
+        <dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+    </dependencies>
+    <scm>
+        <url>http://github.com/mybatis/generator</url>
+        <connection>scm:git:ssh://github.com/mybatis/generator.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/mybatis/generator.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 </project>

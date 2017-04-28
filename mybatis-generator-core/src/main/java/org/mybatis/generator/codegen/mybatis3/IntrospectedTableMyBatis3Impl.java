@@ -31,6 +31,7 @@ import org.mybatis.generator.codegen.AbstractXmlGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.AnnotatedClientGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.JavaMapperGenerator;
 import org.mybatis.generator.codegen.mybatis3.javamapper.MixedClientGenerator;
+import org.mybatis.generator.codegen.mybatis3.jsp.BaseJspGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.BaseRecordGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.ExampleGenerator;
 import org.mybatis.generator.codegen.mybatis3.model.PrimaryKeyGenerator;
@@ -51,6 +52,8 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
     
     /** The client generators. */
     protected List<AbstractJavaGenerator> clientGenerators;
+    
+    
     
     /** The xml mapper generator. */
     protected AbstractXmlGenerator xmlMapperGenerator;
@@ -169,12 +172,12 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
      */
     protected void calculateJavaModelGenerators(List<String> warnings,
             ProgressCallback progressCallback) {
-        if (getRules().generateExampleClass()) {
+        /*if (getRules().generateExampleClass()) {
             AbstractJavaGenerator javaGenerator = new ExampleGenerator();
             initializeAbstractGenerator(javaGenerator, warnings,
                     progressCallback);
             javaModelGenerators.add(javaGenerator);
-        }
+        }*/
 
         if (getRules().generatePrimaryKeyClass()) {
             AbstractJavaGenerator javaGenerator = new PrimaryKeyGenerator();
@@ -196,6 +199,10 @@ public class IntrospectedTableMyBatis3Impl extends IntrospectedTable {
                     progressCallback);
             javaModelGenerators.add(javaGenerator);
         }
+        //生成jsp文件 wxl
+        AbstractJavaGenerator jspGenerator = new BaseJspGenerator();
+        initializeAbstractGenerator(jspGenerator, warnings, progressCallback);
+        javaModelGenerators.add(jspGenerator);
     }
 
     /**

@@ -243,7 +243,7 @@ public class InnerClass extends JavaElement {
 
         sb.append(" {"); //$NON-NLS-1$
         indentLevel++;
-        
+        OutputUtilities.newLine(sb);
         Iterator<Field> fldIter = fields.iterator();
         while (fldIter.hasNext()) {
             OutputUtilities.newLine(sb);

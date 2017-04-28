@@ -68,6 +68,7 @@ public class BaseRecordGenerator extends AbstractJavaGenerator {
             topLevelClass.addImportedType(superClass);
         }
         //commentGenerator.addModelClassComment(topLevelClass, introspectedTable);
+        //topLevelClass.addJavaDocLine("");
 
         List<IntrospectedColumn> introspectedColumns = getColumnsInThisClass();
 

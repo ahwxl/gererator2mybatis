@@ -69,7 +69,7 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         answer.addElement(new TextElement(""));
 
         addResultMapWithoutBLOBsElement(answer);
-        //addResultMapWithBLOBsElement(answer);
+        addResultMapWithBLOBsElement(answer);
         //addExampleWhereClauseElement(answer);
         //addMyBatis3UpdateByExampleWhereClauseElement(answer);
         answer.addElement(new TextElement(""));
